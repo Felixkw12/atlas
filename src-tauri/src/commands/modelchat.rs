@@ -417,7 +417,11 @@ fn fallback_models(provider: &str) -> Vec<&'static str> {
             "zai-org/GLM-5.3",
             "openai/gpt-oss-120b",
         ],
-        "opper" => vec!["claude-sonnet-4-6", "gpt-5.5", "gemini-3.8-flash"],
+        "opper" => vec![
+            "anthropic/claude-sonnet-4-6",
+            "openai/gpt-5.5",
+            "gemini/gemini-3.8-flash",
+        ],
         _ => vec![],
     }
 }
@@ -704,6 +708,13 @@ mod tests {
     #[test]
     fn test_opper_fallback_models() {
         let models = fallback_models("opper");
-        assert_eq!(models, vec!["claude-sonnet-4-6", "gpt-5.5", "gemini-3.8-flash"]);
+        assert_eq!(
+            models,
+            vec![
+                "anthropic/claude-sonnet-4-6",
+                "openai/gpt-5.5",
+                "gemini/gemini-3.8-flash"
+            ]
+        );
     }
 }
